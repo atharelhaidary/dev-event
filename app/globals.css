@@ -1,26 +1,310 @@
+/* @import "tailwindcss"; */
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
+
+/* @import 'antd/dist/reset.css'; */
+
+/* @import "tw-animate-css"; */
+
+
+
+
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* #D81B60 */
+    --primary :#D81B60 ;
+    --background: #030708;
+    --blue :#096dd9;
+    /* inputs */
+    --color-border-wrapper-input:#243B47;
+    --bg-wrapper-input:#182830;
+    /* tags */
+    --bg-tags:#0D161A;
+    /* table */
+    --bg-table-head:#182830;
+    --color-delete : #C82909;
+    --color-error : #F5276C;
+    --color-border-dark :#151024;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+     --color-primary: var(--primary);
+     --color-background: var(--background);
+     --color-primary: var(--primary);
+     --color-blue : var(--blue);
+     /* input */
+     --color-border-wrapper-input:var(--color-border-wrapper-input);
+     --background-color-bg-wrapper-input:var(--bg-wrapper-input);
+     /* tags */
+     --background-color-bg-tags:var(--bg-tags);
+     /* table */
+     --background-color-table-head:var(--bg-table-head);
+     --color-delete:var(--color-delete);
+     --color-error:var(--color-error);
+
+     --color-border-dark: var(--color-border-dark);
+     --font-schibsted-grotesk: var(--font-schibsted-grotesk);
+     --color-light-100: var(--color-light-100);
+     --color-dark-100: var(--color-dark-100);
+     --color-dark-200: var(--color-dark-200);
+     --color-light-100: var(--color-light-100);
+     --color-dark-200: var(--color-dark-200);
+     --color-light-200: var(--color-light-200);
+    --color-border: var(--border);
+    --color-ring: var(--ring);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+@utility flex-center {
+    @apply flex items-center justify-center;
+}
+@utility flex-between {
+    @apply w-full flex flex-wrap items-center  gap-y-6 !justify-center md:!justify-between ;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility glass {
+    @apply bg-[#12121280]/50 rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl ;
 }
+
+@utility card-shadow {
+    box-shadow: 0px 4px 40px 0px #00000066;
+}
+@utility text-gradient {
+    @apply   bg-clip-text text-transparent font-semibold;
+}
+@utility bg-gradient-white {
+    @apply   bg-gradient-to-b from-white via-white;
+}
+@utility bg-gradient-primary {
+    @apply  !bg-gradient-to-r from-purple-600 to-pink-600;
+}
+@utility bg-gradient-delete {
+    @apply !bg-gradient-to-r from-black to-red-500;
+}
+@utility bg-gradient-reset {
+    
+    @apply !bg-gradient-to-r from-[#2EB62C] to-[#83D475]
+}
+@utility bg-gradient-white {
+    @apply !bg-gradient-to-r from-white to-white;
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50 text-white;
+    }
+
+    body {
+        @apply bg-background;
+    }
+
+    main {
+        @apply mx-auto container flex flex-col !px-5  lg:!px-10 py-10 gap-20   relative min-h-[calc(100vh-100px)];
+    }
+    h1{
+        @apply text-4xl md:text-6xl text-center font-bold self-center;
+    }
+    h2 {
+        @apply text-gradient bg-gradient-white max-sm:w-full text-center text-4xl font-semibold md:text-4xl lg:text-6xl ;
+    }
+
+    h3 {
+        @apply font-schibsted-grotesk text-2xl font-bold;
+    }
+
+    ul {
+        @apply list-disc list-none;
+    }
+    
+}
+
+@layer components {
+    
+    .custom-input { 
+        @apply !px-0 !bg-transparent !text-[#DCFFF8] !border-transparent  focus:!border-transparent focus:!shadow-none  focus:!outline-none  hover:!border-transparent !placeholder-[#DCFFF8]  
+     }
+    header {
+        @apply glass sticky top-0 z-50;
+
+        nav {
+            @apply flex flex-row justify-between mx-auto container  !px-5  lg:!px-10 py-3 ;
+        }
+
+        .logo {
+            @apply flex flex-row items-center gap-2;
+
+            p {
+                @apply text-xl font-bold italic max-sm:hidden;
+            }
+        }
+
+        ul {
+            @apply flex flex-row items-center gap-6;
+        }
+    }
+    .events {
+        @apply  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7;
+    }
+    .span-heading{
+        @apply text-3xl font-bold;
+    }
+    .feedback{
+       @apply text-center w-full flex-grow   relative  flex-center flex-col gap-7 relative;
+       h3 {
+        @apply  text-white text-3xl md:text-5xl lg:text-7xl font-bold ;
+       }
+       p{
+        @apply  text-[#B8B8B8] text-lg md:text-3xl italic;
+       }
+    }
+    /* date */
+    .ant-picker-dropdown {
+        .ant-picker-panel , .ant-picker-panel-container{
+            @apply !bg-[#182830] !text-red-500
+            
+        }
+        /* رأس الأيام (Su Mo Tu ...) */
+        .ant-picker-content th {
+            @apply !text-primary !font-bold
+        }
+        /* اليوم الحالي */
+        .ant-picker-cell-today {
+            .ant-picker-cell-inner::before {
+                @apply !text-red-500
+            }
+
+        }
+        /* أرقام الأيام */
+        .ant-picker-cell {
+            .ant-picker-cell-inner {
+                @apply !text-white
+            }
+        }
+        /* Hover على الأيام */
+        .ant-picker-cell-inner:hover{
+            @apply !bg-primary
+
+        }
+        /* اليوم المختار */
+        .ant-picker-cell-selected {
+            .ant-picker-cell-inner {
+                @apply !bg-primary
+
+            }
+        }
+    }
+    /* time */
+    .ant-picker-input > input::placeholder, .ant-picker-input > input {
+        @apply !text-white !border-none; 
+    }
+    .ant-picker-time-panel-cell-inner{
+        @apply !text-white
+    }
+    .ant-picker-time-panel-cell-selected {
+        .ant-picker-time-panel-cell-inner {
+            @apply !bg-blue  !text-white
+        }
+        
+    }
+    .ant-picker-time-panel-cell-inner:hover {
+        @apply !bg-blue !text-white
+    }
+    
+    /* ant design table */
+    .ant-table.custom-table {
+        @apply mt-[30px]  !rounded-xl !relative ;
+        
+        .ant-table-thead > tr > th {
+            @apply  !bg-table-head !border-none !text-white 
+        }
+        
+        .ant-table-cell::before{
+            @apply !border  !border-[#182830] 
+
+        }
+        .ant-table-tbody > tr > td {
+            @apply   !border !border-[#182830] !bg-[#000000] !transition-all !duration-400 !ease-in-out;    
+        }
+      
+         .ant-table-tbody > tr:hover > td {
+            @apply  !bg-bg-wrapper-input  cursor-pointer  shadow-2xl shadow-white/70 
+          } 
+          /* .ant-table-wrapper */
+          .ant-table-tbody .ant-table-row.ant-table-row-selected >.ant-table-cell{
+            @apply !bg-bg-wrapper-input !border-white !rounded-sm shadow-2xl shadow-white/70
+          }
+         /* pagination */
+        .ant-pagination {
+            @apply w-full !flex !items-center !justify-center !gap-4 !gap-y-7 !mt-10 ;
+
+            .ant-pagination-item {
+                @apply !border-2 !border-primary;
+                a{
+                    @apply !text-primary
+                }
+              }
+              .ant-pagination-item:hover{
+                @apply !bg-red-500 bg-gradient-primary !border-none;
+    
+                a{
+                    @apply !text-white
+                }
+              }
+    
+              .ant-pagination-item-active{
+                @apply bg-gradient-primary !border-none;
+    
+                a{
+                    @apply !text-white
+                }
+              }
+
+        }
+        /* scrollbar */
+        .ant-table-container {
+            scrollbar-color: #d818c5 black !important;
+            scrollbar-width: thin !important;
+          }
+        
+    }
+    /* !ml-[-7rem] !w-[calc(100%+35rem)] */ 
+   .custom-collapse .ant-collapse-header {
+       @apply !py-5 !px-0  shadow-sm !sticky top-14.5 !z-40 glass; 
+    }
+    .custom-collapse .ant-collapse-body{
+        @apply   !p-0; 
+    }
+
+    .custom-collapse .ant-collapse-item {
+        @apply  !relative !border-none;
+
+    }
+    
+    .btn-hover-primary{
+        @apply bg-gradient-primary
+    }
+    .btn-hover-delete{
+        @apply   bg-gradient-delete;
+    }
+    .btn-hover-reset{
+        @apply  bg-gradient-reset;
+    }
+    .btn-delete{
+        @apply  !bg-delete 
+    }
+    .bth-reset{
+        @apply !bg-gradient-to-r from-[#83D475] to-[#2EB62C]
+    }
+    .text-gradient-primary{    
+       @apply bg-gradient-primary text-gradient group-hover:!text-white
+    }
+    .text-gradient-reset{    
+        @apply bg-gradient-reset text-gradient group-hover:!text-white
+     }
+}
+
+
+
+
+
+

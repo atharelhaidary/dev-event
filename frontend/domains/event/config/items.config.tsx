@@ -23,7 +23,7 @@ export const generateItems = (event:TCreateEvent) => {
                 label :<span className={`span-heading flex-1`}>Attachments</span>,
                 children : (
                     <div className="flex flex-wrap gap-4">
-                       <LazyImgWithBlur preview={true} classNameImg="w-[100px] h-[100px]" imgStyle="object-cover" src={event?.attachments} alt={`${event.slug}-eventAttchment`} />
+                       <LazyImgWithBlur preview={true} classNameImg="w-[100px] h-[100px]" imgStyle="object-contain" src={event?.attachments} alt={`${event.slug}-eventAttchment`} />
                     </div>
                     ),
                 showArrow: true,
@@ -108,7 +108,7 @@ export const generateItems = (event:TCreateEvent) => {
             key : `6`,
             label : <span className="span-heading flex-1"></span>,
             children : (
-                <div className="flex fex-wrap gap-4">
+                <div className="flex flex-wrap gap-4 w-full">
                     {
                         event?.tags.map((tag,index)=>(
                             <div key={index} className="bg-gradient-primary rounded-xl px-8 py-2">{tag}</div>

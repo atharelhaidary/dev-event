@@ -22,7 +22,7 @@ const SmoothBtn = ({btnStyle, title, hoverColor, onClick, titleStyle,childrenSty
         <Button 
             type={type}
             htmlType={htmlType}
-            className={mergeClasses("relative overflow-hidden  border-0 text-white  !text-sm   md:!text-lg  !font-extrabold  !py-5  !px-12 !rounded-lg transition-all duration-500 hover:scale-105 active:scale-95 group",
+            className={mergeClasses("relative overflow-hidden  border-0 text-white  !text-[16px]   md:!text-lg  !font-extrabold  !py-5  !px-12 !rounded-lg transition-all duration-500 hover:scale-105 active:scale-95 group",
                   btnStyle
             )}
             onClick={onClick}
@@ -47,7 +47,7 @@ const SmoothBtn = ({btnStyle, title, hoverColor, onClick, titleStyle,childrenSty
                 {/* animation */}
                 <div 
                         className={
-                            mergeClasses("absolute inset-0  transform translate-x-full group-hover:translate-x-0 transition-transform duration-500 btn-hover-primary",
+                            mergeClasses("absolute inset-0  transform translate-x-full group-hover:translate-x-0  group-active:translate-x-0  transition-transform duration-500 btn-hover-primary",
                             hoverColor)
                         }
                 ></div>

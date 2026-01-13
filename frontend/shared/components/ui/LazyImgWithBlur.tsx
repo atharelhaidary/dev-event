@@ -33,7 +33,7 @@ export default function LazyImgWithBlur({ src, alt , classNameImg, imgStyle, pri
         return newLoaded;
     });
    };
-   const handleImageClick = (img:any,index: number) => {
+   const handleImageClick = (index: number) => {
     if (preview) {
         setPreviewIndex(index);
     }
@@ -41,9 +41,9 @@ export default function LazyImgWithBlur({ src, alt , classNameImg, imgStyle, pri
   return (
     <>
            {imgs.map((img,index)=>(
-                    <div key={index} className={`relative overflow-hidden rounded-xl group  ${classNameImg}`}  onClick={() => handleImageClick(img,index)}>
+                    <div key={index} className={`relative overflow-hidden rounded-xl group  ${classNameImg} ${!loadedImages[index] && !classNameImg && "h-80 md:h-96"} `}  onClick={() => handleImageClick(index)}>
                         {/* ✅ Blur لكل صورة */}
-                        <div className={`absolute inset-0 transition-opacity duration-500 w-full h-full  ${
+                        <div className={`absolute inset-0 transition-opacity duration-500 w-full h-full ${
                             loadedImages[index] ? 'opacity-0' : 'opacity-100'
                             }`}>
                             <div className="h-full w-full  bg-gradient-to-r from-gray-100 to-gray-200 animate-pulse rounded-xl" />
@@ -58,8 +58,8 @@ export default function LazyImgWithBlur({ src, alt , classNameImg, imgStyle, pri
                             width={dimensions.width}
                             height={dimensions.height}
                             quality={75}
-                            placeholder="blur"
-                            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+                            // placeholder="blur"
+                            // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
                             onLoad={(e) => {
                                 handleImageLoad(index)
                                 const img = e.target as HTMLImageElement;

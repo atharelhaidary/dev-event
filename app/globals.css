@@ -88,6 +88,9 @@
 @utility bg-gradient-white {
     @apply !bg-gradient-to-r from-white to-white;
 }
+@utility nav-link-effect {
+    @apply text-gradient bg-gradient-primary scale-110;
+}
 
 @layer base {
     * {
@@ -119,7 +122,6 @@
 }
 
 @layer components {
-    
     .custom-input { 
         @apply !px-0 !bg-transparent !text-[#DCFFF8] !border-transparent  focus:!border-transparent focus:!shadow-none  focus:!outline-none  hover:!border-transparent !placeholder-[#DCFFF8]  
      }
@@ -127,7 +129,12 @@
         @apply glass sticky top-0 z-50;
 
         nav {
-            @apply flex flex-row justify-between mx-auto container  !px-5  lg:!px-10 py-3 ;
+            @apply flex flex-row justify-between mx-auto container  !px-5  lg:!px-10 py-3;
+              /* أي span جوه link عند hover أو active */
+            .group:hover span,
+            .group:active span {
+                @apply nav-link-effect;
+            }
         }
 
         .logo {
@@ -209,15 +216,12 @@
     .ant-picker-time-panel-cell-inner:hover {
         @apply !bg-blue !text-white
     }
-    
     /* ant design table */
     .ant-table.custom-table {
-        @apply mt-[30px]  !rounded-xl !relative ;
-        
+        @apply mt-[25px]  !rounded-xl !relative flex-grow;
         .ant-table-thead > tr > th {
             @apply  !bg-table-head !border-none !text-white 
         }
-        
         .ant-table-cell::before{
             @apply !border  !border-[#182830] 
 
@@ -235,8 +239,10 @@
           }
          /* pagination */
         .ant-pagination {
-            @apply w-full !flex !items-center !justify-center !gap-4 !gap-y-7 !mt-10 ;
+            @apply w-full !flex   md:!items-center md:!justify-center !gap-4 !gap-y-7 !mt-10;
+            /* .ant-pagination-prev{
 
+            } */
             .ant-pagination-item {
                 @apply !border-2 !border-primary;
                 a{

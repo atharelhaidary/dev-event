@@ -28,11 +28,12 @@ export default function FileUploadField({ field,originalControl,}:TInputs) {
   const handleOnChange = async(file: FieldValues) => {
     const selectedFiles = file?.fileList;
     const newSelected = await Promise.all(
-            selectedFiles.map(async(file:any)=>{
+            selectedFiles.map(async(file:any,index:number)=>{
                 let url = file?.url || file?.originFileObj
+                const name = !multiple ? `Event Banner`: `attachment ${index+1}`
                 if(file.id && file.action !=='delete' ){
                   return{
-                        name: file.name,
+                        name,
                         id: file.id,
                         action : 'keep',
                         url :url,
@@ -40,7 +41,7 @@ export default function FileUploadField({ field,originalControl,}:TInputs) {
                   }
                 }else if(file.id && file.action ==='delete' ){
                   return{
-                    name: file.name,
+                    name,
                     id: file.id,
                     action : 'delete',
                     url :url,
@@ -48,7 +49,7 @@ export default function FileUploadField({ field,originalControl,}:TInputs) {
                    }
                 }else{
                   return{
-                    name: file.name,
+                    name,
                     action : multiple? 'add' : copyOriginalSingleImg?.length === 0 ? "add":'replace',
                     id:!multiple && copyOriginalSingleImg?.length >0 ? copyOriginalSingleImg[0]?.id : null,
                     url :url,
@@ -122,7 +123,7 @@ useEffect(()=>{
     isImgsArry.forEach((_,index)=>{
           if(isImgsArry[index]?.url){
             const processedImages = isImgsArry.map((img,index)=> ({
-              name: !multiple ? `Event Image Banner`: `Event attachments ${index+1}`,
+              name: !multiple ? `Event Banner`: `attachment ${index+1}`,
               url: img?.url,
               action: 'keep' as const,
               id: img?.id,

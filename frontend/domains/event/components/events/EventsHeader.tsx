@@ -16,7 +16,7 @@ const EventsHeader = ({eventCount,isLoading}:TEventsHeaderProps) => {
     }
     return(
         // isLoading &&
-            <div className="flex-between mt-10">
+            <div className="flex-between mt-4">
                 <h2>Event Mangement</h2>
                 <SmoothBtn 
                     type="text"

@@ -24,8 +24,14 @@ export default function Navbar () {
                                     name:'Create Event',
                                     path:"/events/create"
                                 }].map((navItem,index)=>(
-                                <Link href={navItem.path} key={index} className="hover:!text-gradient hover:!bg-gradient-primary hover:!scale-150 !transition-all !duration-400 !ease-in-out">
-                                    {navItem.name}
+                                <Link 
+                                        href={navItem.path} 
+                                        key={index}
+                                        className="group inline-flex"
+                                >
+                                    <span className="transition-all duration-300 ease-in-out">
+                                      {navItem.name}
+                                   </span>
                                 </Link>
                             ))}
                     </div>

@@ -46,10 +46,9 @@ type TQueryClientProviderrProps  =  {
              gcTime: 10 * 60 * 1000, // 10 دقائق
              retry: false,
              refetchOnWindowFocus: false,
-             // refetchOnMount: false,
-             refetchOnReconnect: false, 
+             refetchOnMount: true,
+             refetchOnReconnect: true, 
             //  networkMode: 'offlineFirst',
-         
            },
            mutations: {
              retry: 0,

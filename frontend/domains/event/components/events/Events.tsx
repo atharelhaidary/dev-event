@@ -17,7 +17,7 @@ const Events =  () => {
     }
     const events = data?.data
     return(
-        <section className="flex flex-col flex-grow gap-4">
+        <section className="flex flex-col flex-grow gap-4 global-container">
                {/* header */}
               <Activity mode={ isLoading || events && events.length > 0 ? "visible" :"hidden"}>
                    <EventsHeader/> 

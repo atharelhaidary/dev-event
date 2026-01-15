@@ -5,7 +5,7 @@ import Events from "./events/Events";
 
 const HomePage = () => {
     return(
-    <div className="flex-grow  flex flex-col gap-20 lg:gap-40">
+    <div className="flex-grow  flex flex-col gap-20 lg:gap-40 global-container">
         <Slider/>
         <Suspense fallback={<Spinner/>}>
           <Events/>

@@ -53,8 +53,7 @@ export default function LazyImgWithBlur({ src, alt , classNameImg, imgStyle, pri
                             src={ img as string}
                             alt={`${alt}-index`}
                             style={{ flexGrow: 1 }}
-                            className={mergeClasses(`transition-opacity duration-500 rounded-xl  ${preview && "!border !border-gray-400"} inset-0  w-full h-full ${loadedImages[index] ? 'opacity-100' : 'opacity-0'}`,imgStyle)}
-                            // fill
+                            className={mergeClasses(`transition-opacity duration-500 rounded-xl  ${preview && "!border !border-gray-400"}  inset-0 w-full h-full   ${loadedImages[index] ? 'opacity-100' : 'opacity-0'}`,imgStyle)}
                             width={dimensions.width}
                             height={dimensions.height}
                             quality={75}

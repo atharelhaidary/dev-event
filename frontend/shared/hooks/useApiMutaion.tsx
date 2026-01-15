@@ -103,6 +103,10 @@ export const useApiMutaion = <TResponse extends { message?: string; data?: unkno
         },
         onSettled : (data , error , variables , onMutateResult , context )=>{
             hidePopup("loading");
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
             if(configOnSettled){
                 configOnSettled?.(data,error,variables, onMutateResult, context)
             }

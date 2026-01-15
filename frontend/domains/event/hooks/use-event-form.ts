@@ -11,10 +11,9 @@ type TuseEventFormProps = {
         reValidateMode: "onChange",
         shouldUnregister: false
       });
-    const { control, getValues, setError, reset , setValue, formState: { errors }  } = methods
+    const { control, getValues, setError, reset , formState: { errors }  } = methods
    
     const agendaItems = useWatch({ control, name: "agenda" });
-    console.log('agenda',agendaItems)
     //tags array
     const { fields: tagsFields, remove: removeTag, append: appendTag } = useFieldArray({
         control,

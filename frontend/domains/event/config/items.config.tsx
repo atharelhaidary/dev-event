@@ -2,17 +2,21 @@ import { calender, mode, pin } from "@/frontend/shared/assets/images";
 import {  TCreateEvent } from "../types/event.types";
 import { formatDate } from "@/frontend/shared/lib/utils/format-date";
 import LazyImgWithBlur from "@/frontend/shared/components/ui/LazyImgWithBlur";
+import { MdOutlineArrowDropDown } from "react-icons/md";
+
 import Image from "next/image";
 export const generateItems = (event:TCreateEvent) => {
     const items = [];
     items.push(
         {
             key : `1`,
-            label :  <span className="span-heading flex-1">Overview</span>,
-            children : <p>{event?.overview}</p>,
-            showArrow: true,
-
-
+            label : 
+               <div className="flex justify-between items-center">
+                    <span className="span-heading  flex-1">Overview</span>
+                    <MdOutlineArrowDropDown size="25"/>
+                </div>,
+            children :( <div>{event?.overview}</div>),
+            showArrow: false,
         },
 
     )
@@ -20,13 +24,17 @@ export const generateItems = (event:TCreateEvent) => {
         items.push(
             {
                 key : `2`,
-                label :<span className={`span-heading flex-1`}>Attachments</span>,
+                label :
+                    <div className="flex justify-between items-center">
+                        <span className="span-heading  flex-1">Attachments</span>
+                        <MdOutlineArrowDropDown size="25"/>
+                    </div>,
                 children : (
                     <div className="flex flex-wrap gap-4">
                        <LazyImgWithBlur preview={true} classNameImg="w-[100px] h-[100px]" imgStyle="object-contain" src={event?.attachments} alt={`${event.slug}-eventAttchment`} />
                     </div>
                     ),
-                showArrow: true,
+                showArrow: false,
     
             },
         )
@@ -35,9 +43,13 @@ export const generateItems = (event:TCreateEvent) => {
     items.push(
         {
             key : `3`,
-            label : <span className="span-heading flex-1">Event Details</span>,
+            label : 
+                <div className="flex-center">
+                    <span className="span-heading  flex-1">Event Details</span>
+                    <MdOutlineArrowDropDown size="25"/>
+                </div>,
             children : (
-                        <div className="flex flex-col gap-3" >
+                        <div className="flex flex-col gap-3 ">
                             { [
                                     {
                                         img:calender,
@@ -63,7 +75,7 @@ export const generateItems = (event:TCreateEvent) => {
                         </div>
 
             ),
-            showArrow: true,
+            showArrow: false,
 
         },
 
@@ -71,9 +83,13 @@ export const generateItems = (event:TCreateEvent) => {
     items.push(
         {
             key : `4`,
-            label : <span className="span-heading flex-1">Agenda</span>,
+            label : 
+                    <div className="flex-center">
+                        <span className="span-heading  flex-1">Agenda</span>
+                        <MdOutlineArrowDropDown size="25"/>
+                    </div>,
             children : (
-                <div className="flex flex-col gap-10" >
+                <div className="flex flex-col gap-10 ">
                             {Array.isArray(event.agenda)&& event.agenda.length > 0 && event.agenda?.map((agendaItem, index:number) => (
                                 <div key={index} className="flex flex-col gap-2 ml-5">
                                     <div className="flex items-center gap-2">
@@ -89,7 +105,7 @@ export const generateItems = (event:TCreateEvent) => {
                             ))}
                 </div>
             ),
-            showArrow: true,
+            showArrow: false,
 
         },
 
@@ -97,18 +113,26 @@ export const generateItems = (event:TCreateEvent) => {
     items.push(
         {
             key : `5`,
-            label : <span className="span-heading flex-1">About the Organizer</span>,
+            label : 
+                <div className="flex-center">
+                    <span className="span-heading  flex-1">About the Organizer</span>
+                    <MdOutlineArrowDropDown size="25"/>
+                </div>,
             children : <p >{event?.organizer}</p>,
-            showArrow: true,
+            showArrow: false,
 
         },
        ),
     items.push(
         {
             key : `6`,
-            label : <span className="span-heading flex-1"></span>,
+            label : 
+                <div className="flex-center">
+                        <span className="span-heading  flex-1">Tags</span>
+                        <MdOutlineArrowDropDown size="25"/>
+                </div>,
             children : (
-                <div className="flex flex-wrap gap-4 w-full">
+                <div className="flex flex-wrap gap-4 w-full ">
                     {
                         event?.tags.map((tag,index)=>(
                             <div key={index} className="bg-gradient-primary rounded-xl px-8 py-2">{tag}</div>
@@ -117,7 +141,7 @@ export const generateItems = (event:TCreateEvent) => {
 
                 </div>
             ),
-            showArrow: true,
+            showArrow: false,
         }
     )
 

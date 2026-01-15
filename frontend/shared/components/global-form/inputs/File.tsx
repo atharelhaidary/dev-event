@@ -189,7 +189,12 @@ useEffect(()=>{
                             <span className="font-light">upload {label.value}</span>
                           </>
                   </SmoothBtn>
-                   {
+                   
+
+              
+              </Upload>
+              <div className="max-h-80 overflow-y-auto scrollbar-style ">
+                  {
                         fileLists?.map((file,index)=>{
                           //url image 
                           const fileUrl = typeof file.url === "string" ? file.url : file.thumbUrl 
@@ -199,8 +204,10 @@ useEffect(()=>{
                           <div 
                             key={`${file.name}-${index}`}
                             className={`relative w-full flex justify-between items-center border border-white p-5 rounded-xl mb-3
-                                        hover:!bg-white  hover:cursor-pointer hover:scale-110
+                                        hover:!bg-white  hover:cursor-pointer
+                                      
                                         transition-transform duration-400 ease-in-out group
+                                        
                             `}
                             onClick={(e)=>{
                               e.preventDefault()
@@ -230,10 +237,8 @@ useEffect(()=>{
                           </div>
                           )
                         })
-                    }
-
-              
-              </Upload>
+                  }
+              </div>
 
        </>
   );

@@ -1,5 +1,5 @@
 "use client"
-import notFoundImg from '@/frontend/domains/event/assets/ui/not-foundd.webp'
+import notFoundImg from '@/frontend/domains/event/assets/ui/not-found.png'
 import LazyImgWithBlur from '@/frontend/shared/components/ui/LazyImgWithBlur';
 import SmoothBtn from '@/frontend/shared/components/ui/SmoothBtn';
 import { useRouter } from 'next/navigation';

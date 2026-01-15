@@ -18,7 +18,7 @@ const EventTable = () => {
                 rowKey="id"
                 columns={columns}
                 dataSource={evetData}
-                className="ant-table custom-table my-scrollbar"
+                className="ant-table custom-table"
                 rowSelection={ rowSelection }
                 onRow={ handleRowClick }
                 scroll={{ x: 'max-content',  y:tableHeight }}

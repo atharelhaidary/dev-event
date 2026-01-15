@@ -28,7 +28,6 @@ export const formatZodErrors = (error:  z.ZodError): Record<string, string> => {
       if (i === path.length - 1) {
         current[key] = issue.message;
       } else {
-        console.log('pathffff',issue.message)
         const nextKey = path[i + 1];
         const isNextIndex = typeof nextKey === 'number' || /^\d+$/.test(nextKey as string);
         

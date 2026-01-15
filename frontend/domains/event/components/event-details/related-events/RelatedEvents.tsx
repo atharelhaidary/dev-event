@@ -3,7 +3,7 @@ import { TCreateEvent } from "../../../types/event.types";
 const RelatedEvents = async ({events}:{events: TCreateEvent[]}) =>{
             return(
                 events && events.length > 0 && (
-                        <div className="flex flex-col gap-5">
+                        <div className="flex flex-col gap-5 global-container">
                                 <span className="span-heading">Similar Events</span>
                                 <div className="events">
                                         {

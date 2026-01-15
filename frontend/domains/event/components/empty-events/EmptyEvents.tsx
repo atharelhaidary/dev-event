@@ -10,7 +10,7 @@ const EmptyEvents = () => {
     }
     return(
         <div className="feedback">
-                <div className="relative aspect-[4/3] w-full max-w-[280px] lg:max-w-[400px]">
+                <div className="relative aspect-[4/3] w-full max-w-[280px] lg:max-w-[400px] mb-20">
                     <LazyImgWithBlur 
                         src={empty.src} 
                         alt="emptyImg" 

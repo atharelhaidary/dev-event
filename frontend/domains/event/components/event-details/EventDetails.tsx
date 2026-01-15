@@ -9,30 +9,29 @@ type TEventDetailsProps = {
 }
 const EventDetails =  ({event}:TEventDetailsProps) => {
     const length = 6;
-
     const items = generateItems(event)
 
     return(
-            <div className="flex flex-col gap-17 w-full" >
+            <div className="flex flex-col gap-17 w-full">
                 {/* header */}
-                <div className="flex flex-col gap-5 w-full">
+                <div className="flex flex-col gap-5 w-full global-container">
                     <h2 className="text-start">{event?.title}</h2>
                     <p>{event?.description}</p>
                 </div>
                 {/* image */}
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-20 items-start flex-grow w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-20 items-start flex-grow w-full global-container">
                         <LazyImgWithBlur   src={event?.image?.url || "/images/noImg.png" } alt={`${event.slug}-eventImg`}  />
                         <BookEvent idEvent={Number(event?.id)}/>
                 </div>
                 {/* details */}
-                <div className="flex flex-col justify-center items-center gap-5 w-full lg:w-[65%] !text-xl" >
+                <div className="justify-center items-center gap-5 w-full !text-xl">
                      <Collapse
                             bordered={false}
                             style={{ padding: 0 }}
-                            className="custom-collapse w-full flex flex-col gap-10  !text-[18px]"
+                            className="custom-collapse w-full flex flex-col gap-10  !text-[18px] "
                             defaultActiveKey={Array.from({ length }, (_, index) => String(++index))}
                             items={items}
-                            expandIconPlacement="end"
+                            // expandIconPlacement="start"
                     />
                 </div>
             </div>

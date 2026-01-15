@@ -39,11 +39,13 @@ type TUpdateEventPageProps = {
 export default async function UpdateEventPage ({params}:TUpdateEventPageProps)  {
   const resolvedParams = await params
   return(
-    <section className="w-full md:w-[80%] lg:w-[60%] mx-auto flex flex-col gap-10 items-center py-4 border-[2px] rounded-xl border-[#243B47] relative flex-grow">
-          <h2> Update an Event</h2>
-          <Suspense fallback={<Spinner/>}>
-              <DelayedContent params={resolvedParams}/>
-          </Suspense>
+    <section className="global-container  flex flex-col flex-grow">
+        <div className="w-full  lg:w-[60%] mx-auto flex-grow flex flex-col gap-10 items-center py-4 border-[2px] rounded-xl border-[#243B47] relative">
+              <h2> Update an Event</h2>
+              <Suspense fallback={<Spinner/>}>
+                  <DelayedContent params={resolvedParams}/>
+              </Suspense>
+        </div>
       </section>
   ) 
 }

@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server';
 //  * @returns NextResponse
 //  */
 export function handleError(error: unknown): NextResponse {
-  console.log('error,',error)
+  // console.log('error,',error)
 
   // Handle other known Error instances
   if (error instanceof Error) {

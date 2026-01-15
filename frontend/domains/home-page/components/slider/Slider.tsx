@@ -3,7 +3,7 @@ import { arrowDown } from '../../../../shared/assets/images/index';
 import SmoothBtn from "../../../../shared/components/ui/SmoothBtn";
 export default function Slider () {
     return(
-        <div className=" flex-center flex-col gap-6 w-full">
+        <div className=" flex-center flex-col gap-6 w-full mt-7">
             <h1>
                 The Hub for Every Dev<br/>
                 Event You Can’t Miss 
@@ -12,21 +12,26 @@ export default function Slider () {
                Hackathons, Meetups, and Conferences, All in One Place
             </p>
             
-            <SmoothBtn htmlType="button" btnStyle="hover:!bg-transparent !rounded-full !p-6">
-                <a href="#allEvents" className="flex gap-3 items-center">
-                  <span>Explore Event</span>
-                  <div  className="relative w-[30px] h-[30px]">
-                        <Image 
-                            src={arrowDown} 
-                            alt="سهم للأسفل" 
-                            fill
-                            style={{
-                            objectFit: 'contain' 
-                            }}
-                        />
-                  </div>
-                </a>
-            </SmoothBtn>
+            <SmoothBtn 
+                    type="text"
+                    htmlType="button" 
+                    btnStyle="!bg-gradient-primary !border-none hover:!bg-none" 
+                    children={
+                        <a href="#allEvents" className="flex gap-3 items-center">
+                                <span>Explore Event</span>
+                                <div  className="relative w-[30px] h-[30px]">
+                                    <Image 
+                                        src={arrowDown} 
+                                        alt="سهم للأسفل" 
+                                        fill
+                                        style={{
+                                            objectFit: 'contain' 
+                                        }}
+                                    />
+                                </div>
+                        </a>
+
+            }/>
         </div>
     )
 }

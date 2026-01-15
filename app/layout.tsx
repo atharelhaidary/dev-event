@@ -5,7 +5,6 @@ import Navbar from "@/frontend/domains/navbar/Navbar";
 import { Metadata } from "next";
 const LightRays = React.lazy(() => import("@/frontend/domains/light-rays/LightRays"));
 
-
 export const metadata: Metadata = {
   title: 'Event Platform',
   description: 'Discover amazing events',
@@ -31,10 +30,6 @@ export default async function RootLayout({children,}:Readonly<{children: React.R
    
           <html lang="en">
             <head>
-              {/* <meta
-                httpEquiv="Content-Security-Policy"
-                content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"
-              /> */}
             </head>
             <body
               className={`antialiased min-h-screen`}
@@ -46,7 +41,7 @@ export default async function RootLayout({children,}:Readonly<{children: React.R
                             <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
                                   <LightRays
                                       raysOrigin="top-center-offset"
-                                      raysColor="#D81B60"
+                                      raysColor="#3B82F6"
                                       raysSpeed={0.5}
                                       lightSpread={0.9}
                                       rayLength={1.4}
@@ -56,7 +51,7 @@ export default async function RootLayout({children,}:Readonly<{children: React.R
                                       distortion={0.01}
                                   />
                             </div>
-                            <main>
+                            <main >
                               {children}
                             </main>
                     </AppProvider>

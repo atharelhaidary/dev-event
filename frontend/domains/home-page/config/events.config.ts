@@ -17,7 +17,7 @@ export const events : TCreateEvent []  = [
             url:'/images/event1.png'
         },
         tags: [],
-        agenda: []
+        agenda: [],
     },
     {
         venue: 'Zadar' ,

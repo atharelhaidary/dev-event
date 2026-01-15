@@ -17,8 +17,10 @@ function Info ({img,title}:{img:string,title:string}) {
 }
 export default function EventCard ({eventInfo}:{eventInfo:TCreateEvent}) {
     return(
-    <Link href="" className="h-auto w-full rounded-b-2xl rounded-t-xl  flex flex-col border border-bg-tags">
-        <LazyImgWithBlur classNameImg="aspect-square rounded-none"  imgStyle="!rounded-b-none"  src={eventInfo?.image?.url || "/images/noImg.png" } alt={`${eventInfo.slug}-eventImg`} priority={true} loading="eager"/>
+    <Link href={!eventInfo['_id'] ? "" :`/events/${eventInfo.id}_${eventInfo.slug}`} className="h-auto w-full rounded-b-2xl rounded-t-xl  flex flex-col border border-bg-tags">
+        <div className="shadow-2xl shadow-white/70">
+            <LazyImgWithBlur classNameImg="aspect-square rounded-none"  imgStyle="!rounded-b-none object-contain"  src={eventInfo?.image?.url || "/images/noImg.png" } alt={`${eventInfo.slug}-eventImg`} priority={true} loading="eager"/>
+        </div>
         <div className="flex flex-col gap-4 py-4 mt-2  flex-grow px-3  rounded-xl">
             <Info img={pinImage} title={`${eventInfo.venue},${eventInfo.location}`}/>
             <p className="text-xl font-bold flex-grow">{eventInfo.title}</p>

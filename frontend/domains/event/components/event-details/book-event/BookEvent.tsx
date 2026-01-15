@@ -8,12 +8,13 @@ import { createBookEvent } from "../../../actions/mutation"
 import { usePopup } from "@/frontend/shared/context/PopupContext"
 import { toast } from "sonner"
 import { generateFormData } from "@/frontend/shared/lib/utils/generate-form-data"
-import { useRouter } from "next/navigation"
+import {  } from "next/navigation"
+import { useQueryClient } from "@tanstack/react-query"
 type TBookEventProps = {
     idEvent : number
 }
 const BookEvent = ({idEvent}: TBookEventProps) => {
-    const router = useRouter();
+    const queryClient = useQueryClient();
     const methods = useForm<FieldValues>({
         mode: "onSubmit",
         defaultValues : {
@@ -32,7 +33,9 @@ const BookEvent = ({idEvent}: TBookEventProps) => {
             const formData = new FormData()
             const response =  await  createBookEvent(generateFormData(formData,data),{caller:"client-component"})
             if(response.status === 201){
-                router.refresh();
+                queryClient.invalidateQueries({
+                    queryKey: ['events']
+                  });
                 toast.success(response.message)
                 reset({
                     "email":""

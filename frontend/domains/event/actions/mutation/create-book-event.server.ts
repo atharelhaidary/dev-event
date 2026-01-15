@@ -3,7 +3,7 @@ import { EVENT_ENDPOINTS } from "../../services/event.endpoint"
 import { apiFetch } from "@/frontend/shared/lib/api/api-fetch"
 import { TBookEvent } from "../../types/event.types"
 import { notFound } from "next/navigation"
-import { revalidatePath } from "next/cache"
+import {  } from "next/cache"
 
 export const createBookEvent = async (eventInfo:FormData, options?:{caller?:'server-component' | 'client-component' | 'server-action'}) => {
      const callerType = options?.caller || 'server-component' 
@@ -14,7 +14,6 @@ export const createBookEvent = async (eventInfo:FormData, options?:{caller?:'ser
             method : 'POST',
             data : eventInfo
           })
-        revalidatePath('/events');
         return response;
      }catch(error : any ){
             if(error.status === 404 || error.status === 400){

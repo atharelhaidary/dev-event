@@ -143,11 +143,11 @@
             @apply flex flex-row justify-between global-container py-3;
               /* أي span جوه link عند hover أو active */
             .group:hover span,
-            .group:active span {
+            .group:active span ,.active-link{
                 @apply nav-link-effect;
             }
+            
         }
-
         .logo {
             @apply flex flex-row items-center gap-2;
 

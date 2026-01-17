@@ -1,8 +1,8 @@
 import React from "react";
 import AppProvider from "../frontend/shared/providers/AppProvider";
 import './globals.css'
-import Navbar from "@/frontend/domains/navbar/Navbar";
 import { Metadata } from "next";
+import Navbar from "@/frontend/domains/navbar/Navbar";
 const LightRays = React.lazy(() => import("@/frontend/domains/light-rays/LightRays"));
 
 export const metadata: Metadata = {

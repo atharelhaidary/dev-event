@@ -1,12 +1,12 @@
 "use client"
 import { useRouter } from "next/navigation"
 import { useEvent } from "./queries/use-event"
-import { formatDate } from "@/frontend/shared/lib/utils/format-date"
 import { usePopup } from "@/frontend/shared/context/PopupContext"
 import { useEffect, useState } from "react"
 import { TEventTable } from "../types/event-table.types"
 import SmoothBtn from "@/frontend/shared/components/ui/SmoothBtn"
 import { Key} from 'antd/es/table/interface';
+import { formatDate } from "@/frontend/shared/lib/utils/format-date"
 
 
 
@@ -21,7 +21,6 @@ export const useEventTableData = () => {
      //handleDelete
      const handleDelete = () => {
       showPopup("delete",{data:{id: selectedRowKeys}})
-      // setSelectedRowKeys([])
      }
     //handleUpdate
     const handleUpdate = (id: number, slug:string) => {
@@ -68,7 +67,16 @@ export const useEventTableData = () => {
           if (isButton ) {
             event.stopPropagation(); 
             if (!isSelected) {
-              setSelectedRowKeys(prev => [...prev, record.id]);
+              
+                     const copySelectedRowKeys = [...selectedRowKeys,record.id]
+                     const newSelectedKeys = copySelectedRowKeys.filter((rowKey) => 
+                      EventData?.data?.find((item) => item.id == rowKey)
+                    );
+                    if (newSelectedKeys.length > 0) {
+                      setSelectedRowKeys(newSelectedKeys);
+                      return;
+                    }
+                    setSelectedRowKeys(copySelectedRowKeys);
             }
             return; 
           }
@@ -81,17 +89,15 @@ export const useEventTableData = () => {
       };
     };
 
-
-    
-
      useEffect(()=>{
       if(selectedRowKeys.length > 0 && popupStates['delete']?.open ){
         handleDelete()
       }
      },[selectedRowKeys])
-
     //table data
-    const data =  EventData?.data?.map((item)=>({
+    const data =  EventData?.data?.map((item)=>{
+      return(
+      ({
         id:item.id,
         key: item.id,
         title:item.title,
@@ -141,7 +147,9 @@ export const useEventTableData = () => {
     
                    }
                  </div>
-    }))
+    })
+  )
+})
   
 
     return { data, rowSelection , handleRowClick };

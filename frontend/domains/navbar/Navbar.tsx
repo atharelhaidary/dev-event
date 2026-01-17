@@ -1,7 +1,13 @@
+"use client"
 import Link from "next/link";
 import Image from "next/image";
+import { mergeClasses } from "@/frontend/shared/lib/utils/classNames";
+import { usePathname } from "next/navigation";
 
-export default function Navbar () {
+
+
+const Navbar = () => {
+    const pathname = usePathname()
     return(
         <header>
             <nav>
@@ -14,22 +20,22 @@ export default function Navbar () {
                             {[
                                 {
                                     name:'Home',
-                                    path:"/"
+                                    path:"/",
                                 },
                                 {
                                     name:'Event',
-                                    path:"/events"
+                                    path:"/events",
                                 },
                                 {
                                     name:'Create Event',
-                                    path:"/events/create"
+                                    path:"/events/create",
                                 }].map((navItem,index)=>(
                                 <Link 
                                         href={navItem.path} 
                                         key={index}
                                         className="group inline-flex"
                                 >
-                                    <span className="transition-all duration-300 ease-in-out">
+                                    <span className={mergeClasses("transition-all duration-300 ease-in-out",pathname ==navItem.path ? "active-link":"" )}>
                                       {navItem.name}
                                    </span>
                                 </Link>
@@ -39,3 +45,4 @@ export default function Navbar () {
          </header>
     )
 }
+export default Navbar

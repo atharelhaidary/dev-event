@@ -1,18 +1,25 @@
 
-
-  export const formatDate = (dateString: string) : string=> {
-    if (!dateString) return ""; 
+  export function formatDate( dateString: string) : string {
+    const date = new Date(dateString);
+    const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const monthNames = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 
+                        'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
     
-    try {
-      const date = new Date(dateString);
-      
-      if (isNaN(date.getTime())) {
-        return dateString.split(" ").slice(0, 4).join(" ");
+    const dayName = dayNames[date?.getDay()];
+    const day = date.getDate();
+    const month = monthNames[date?.getMonth()];
+    const year = date.getFullYear();
+    
+    const getSuffix = (d : number) => {
+      if (d > 3 && d < 21) return 'th';
+      switch (d % 10) {
+        case 1: return 'st';
+        case 2: return 'nd';
+        case 3: return 'rd';
+        default: return 'th';
       }
-      
-      return date.toUTCString().split(" ").slice(0, 4).join(" ");
-    } catch (error) {
-      return dateString.split(" ").slice(0, 4).join(" ");
-    }
-  };
-
+    };
+    
+    return `${dayName}, ${day}${getSuffix(day)} ${month} ${year}`;
+  }
+  

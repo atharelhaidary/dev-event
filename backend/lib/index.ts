@@ -5,6 +5,7 @@ import { imageActionHandler } from "./images/image-action-handler";
 import { parseBody } from "./parsers/parse-body";
 import { isEmptyBody } from "./validators/is-empty-body";
 import { validateBodyKeys } from "./validators/validate-body-keys";
+import { pagination } from "./pagination/pagination";
 
 export {
     handleError,
@@ -12,5 +13,6 @@ export {
     imageActionHandler,
     parseBody,
     isEmptyBody,
-    validateBodyKeys
+    validateBodyKeys,
+    pagination
 }

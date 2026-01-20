@@ -14,7 +14,7 @@ export const useEventTableHeight = () => {
         return () => window.removeEventListener('resize', handleResize);
       }, []);
       
-    const tableHeight = windowHeight - 420;
+    const tableHeight = windowHeight - 500;
 
 
   return { tableHeight }

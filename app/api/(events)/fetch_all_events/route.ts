@@ -1,16 +1,20 @@
 import connectDB from "@/backend/lib/mongodb";
-import { NextResponse } from "next/server";
-import Event from "@/backend/database/event.model";
-import { handleError } from "@/backend/lib/errors/handleErrors";
+import { NextRequest, NextResponse } from "next/server";
+import { pagination, handleError } from "@/backend/lib";
+import { Event, IEvent } from "@/backend/database";
 //fetch event
-export async function GET() {
+export async function GET(req: NextRequest) :Promise<NextResponse> {
     try{
      await  connectDB();
+     const searchParams = req.nextUrl.searchParams;
+    const params = Object.fromEntries(searchParams);
      if(!Event){
-      return NextResponse.json({message:'Event model not found'},{status:500})
+       return NextResponse.json({message:'Event model not found'},{status:500})
      }
-     const eventInfo = await Event.find().lean();
-     return NextResponse.json({message:'Events fetched successfully','number-of-event':eventInfo.length,data:eventInfo},{status:200})
+     const result = await pagination<IEvent>(Event,params,{
+        searchFields : ['title'],
+     })
+     return NextResponse.json(result, {status:200})
     }catch(error){
       return handleError(error)
     }

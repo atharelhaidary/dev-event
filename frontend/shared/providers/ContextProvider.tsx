@@ -1,14 +1,15 @@
-import { PopupProvider } from "../context/PopupContext"
-
+import { PopupProvider, PaginationProvider } from "../context"
 
 type TContextProviderProps = {
     children : React.ReactNode
 }
 const ContextProvider = ({children} : TContextProviderProps) => {
     return(
-        <PopupProvider>
-            {children}
-        </PopupProvider>
+        <PaginationProvider>
+            <PopupProvider>
+                {children}
+            </PopupProvider>
+        </PaginationProvider>
 
     )
 

@@ -32,8 +32,8 @@ export default function GlobalForm({ children, onSubmit, submit = {text:"submit"
                 form="global-form" 
                 type="text"
                 htmlType="submit" 
-                childrenStyle="flex gap-2"
-                btnStyle={mergeClasses("!bg-gradient-primary !border-none hover:!bg-none",submit?.class)}
+                childrenStyle="flex gap-2 items-center"
+                btnStyle={mergeClasses("!bg-gradient-primary !border-none hover:!bg-none ",submit?.class)}
             >
               {submit.text}
               {submit?.icon && submit?.icon}

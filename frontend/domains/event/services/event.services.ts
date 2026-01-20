@@ -14,8 +14,9 @@ export const eventServices = {
                 return res.data;
     },
     //fetch all events
-    getAllEvent : async () : Promise<ApiResponse<TCreateEvent[]>>  => {
-                const res = await apiAxios.get(`/${EVENT_ENDPOINTS.getAll()}`);
+    getAllEvent : async (page: number, pageSize: number, queryParams: string | null) : Promise<ApiResponse<TCreateEvent>>  => {
+                const url = !queryParams ? `/${EVENT_ENDPOINTS.getAll(page,pageSize)}` : `/${EVENT_ENDPOINTS.getAll(page,pageSize,queryParams)}`
+                const res = await apiAxios.get(url);
                 return res.data;
     }, 
     //fetch event by id       

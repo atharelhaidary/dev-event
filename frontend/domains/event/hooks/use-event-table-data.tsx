@@ -16,7 +16,8 @@ export const useEventTableData = () => {
     const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
 
 
-    const { data: EventData } = useEvent();
+    const { data : EventData  } = useEvent();
+    const pagination = EventData?.pagination
     const { showPopup, popupStates } = usePopup()
      //handleDelete
      const handleDelete = () => {
@@ -149,8 +150,8 @@ export const useEventTableData = () => {
                  </div>
     })
   )
-})
+    })
   
 
-    return { data, rowSelection , handleRowClick };
+    return { data , pagination,rowSelection , handleRowClick };
 }

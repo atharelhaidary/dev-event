@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 };
 export default async function CreateEventPage () {
         return(
-          <section className="global-container  w-full">
-            <div className="w-full  lg:w-[60%] mx-auto flex flex-col gap-10 items-center py-4 border-[2px] rounded-xl border-[#243B47] relative">
-              <h2> Create an Event</h2>
-              <CreateEvent/>
-            </div>
-          </section>
+            <section className="global-container  w-full">
+              <div className="w-full  lg:w-[60%] mx-auto flex flex-col gap-10 items-center py-4 border-[2px] rounded-xl border-[#243B47] relative">
+                <h2> Create an Event</h2>
+                <CreateEvent/>
+              </div>
+            </section>
         )
    
 }

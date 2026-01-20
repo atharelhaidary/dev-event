@@ -10,7 +10,7 @@ import { usePagination } from "@/frontend/shared/context/PaginationContext"
 export const useEvent = (enabled = true)=>{
     const { page , pageSize, queryParams } = usePagination();
     const hasQueryParams = queryParams.trim() !== ''
-    return useApiQuery<ApiResponse<TCreateEvent>, ApiError>({
+    return useApiQuery<ApiResponse<TCreateEvent[]>, ApiError>({
       keys: hasQueryParams  ? ['events', page, pageSize, queryParams] : ['events', page, pageSize],  
       func: () => eventServices.getAllEvent(page, pageSize, hasQueryParams ? queryParams : null ), 
       enabled: enabled,

@@ -10,8 +10,7 @@ export const metadata: Metadata = {
 };
 export default async function EventPage (){
     return(
-        <Events/>
-        
+            <Events/>  
     )
 
 }

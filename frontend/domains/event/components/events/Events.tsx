@@ -7,7 +7,7 @@ import EventsHeader from "./EventsHeader";
 import EmptyEvents from "../empty-events/EmptyEvents";
 import EventFilters from "./EventsFilters";
 import EmptySearch from "../empty-search/EmptySearch";
-import { Activity } from "react";
+import { Activity} from "react";
 
 
 
@@ -20,7 +20,7 @@ const Events =  () => {
     return(
         <section className="flex flex-col flex-grow gap-4 global-container">
                {/* header */}
-              <Activity mode={ isLoading || eventsData && eventsData.length > 0 ? "visible" :"hidden"}>
+              <Activity mode={ isLoading || eventsData && eventsData?.length > 0 ? "visible" :"hidden"}>
                    <EventsHeader/> 
                </Activity>
                {/* loading */}
@@ -35,16 +35,16 @@ const Events =  () => {
                         />
                </Activity>
                {/* table */}
-               <Activity mode={ eventsData && eventsData.length > 0 ? "visible" :"hidden"}>
+               <Activity mode={ eventsData && eventsData?.length > 0 ? "visible" :"hidden"}>
                     <EventFilters/>
                     <EventTable/> 
                </Activity>
                {/* empty search */}
-               <Activity mode={ eventsData && eventsData.length === 0 && data?.hasSearchQuery ? "visible" :"hidden"}>
+               <Activity mode={ eventsData && eventsData?.length === 0 && data?.hasSearchQuery ? "visible" :"hidden"}>
                     <EmptySearch/>
                </Activity>
                 {/* empty events */}
-                <Activity mode={ eventsData && eventsData.length === 0 && data?.isEmptySystem ? "visible" :"hidden"}>
+                <Activity mode={ eventsData && eventsData?.length === 0 && data?.isEmptySystem ? "visible" :"hidden"}>
                      <EmptyEvents/>   
                </Activity>
         </section> 

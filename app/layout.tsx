@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import AppProvider from "../frontend/shared/providers/AppProvider";
 import './globals.css'
 import { Metadata } from "next";
 import Navbar from "@/frontend/domains/navbar/Navbar";
+import Spinner from "@/frontend/shared/components/feedback/Spinner";
 const LightRays = React.lazy(() => import("@/frontend/domains/light-rays/LightRays"));
 
 export const metadata: Metadata = {
@@ -36,25 +37,27 @@ export default async function RootLayout({children,}:Readonly<{children: React.R
             >
 
                   {/* <StrictMode> */}
-                    <AppProvider>
-                            <Navbar/>
-                            <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
-                                  <LightRays
-                                      raysOrigin="top-center-offset"
-                                      raysColor="#3B82F6"
-                                      raysSpeed={0.5}
-                                      lightSpread={0.9}
-                                      rayLength={1.4}
-                                      followMouse={true}
-                                      mouseInfluence={0.02}
-                                      noiseAmount={0.0}
-                                      distortion={0.01}
-                                  />
-                            </div>
-                            <main >
-                              {children}
-                            </main>
-                    </AppProvider>
+                              <Navbar/>
+                              <div className="absolute inset-0 top-0 z-[-1] min-h-screen">
+                                    <LightRays
+                                        raysOrigin="top-center-offset"
+                                        raysColor="#3B82F6"
+                                        raysSpeed={0.5}
+                                        lightSpread={0.9}
+                                        rayLength={1.4}
+                                        followMouse={true}
+                                        mouseInfluence={0.02}
+                                        noiseAmount={0.0}
+                                        distortion={0.01}
+                                    />
+                              </div>
+                              <Suspense fallback={<Spinner/>}>
+                                <AppProvider>
+                                    <main>
+                                      {children}
+                                    </main>
+                                  </AppProvider>
+                             </Suspense>
               {/* </StrictMode> */}
             </body>
           </html>

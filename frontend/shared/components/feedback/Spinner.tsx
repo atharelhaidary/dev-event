@@ -1,7 +1,7 @@
 
 const Spinner = () => {
         return (
-          <div className="w-full  h-full flex flex-grow justify-center items-center ">
+          <div className="w-full  h-full flex flex-grow justify-center items-center">
             <div className="relative w-10 h-10 animate-spin" style={{scale:4}}>
               {
                 [

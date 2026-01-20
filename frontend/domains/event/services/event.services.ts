@@ -14,7 +14,7 @@ export const eventServices = {
                 return res.data;
     },
     //fetch all events
-    getAllEvent : async (page: number, pageSize: number, queryParams: string | null) : Promise<ApiResponse<TCreateEvent>>  => {
+    getAllEvent : async (page: number, pageSize: number, queryParams: string | null) : Promise<ApiResponse<TCreateEvent[]>>  => {
                 const url = !queryParams ? `/${EVENT_ENDPOINTS.getAll(page,pageSize)}` : `/${EVENT_ENDPOINTS.getAll(page,pageSize,queryParams)}`
                 const res = await apiAxios.get(url);
                 return res.data;
